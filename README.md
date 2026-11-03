@@ -53,14 +53,11 @@ Baud Rate115200WORD LENGTH8BITS PARITY NONE STOP BITS 1
 絕不做的事：絕對不在 ISR 內使用 HAL_Delay()、做複雜運算或等待 UART 傳輸，以免卡死系統。2. 主迴圈 (while(1)) 的分工特性：持續不斷地循環執行，利用非阻塞技巧同時處理多個任務，互相不干擾。本專案實作：任務一：PA12 按鈕輪詢與黃色 LED 控制   在每次迴圈直接讀取 PA12 電平，按下即讓 PA11 黃色 LED 亮，放開即滅。   任務二：PWM 呼吸燈狀態機（時間差計算）   利用 HAL_GetTick() 搭配 last_tick 記錄時間差。當達到設定間隔（例如 2ms 或 10ms）時，根據 breathing_enabled 旗標自動遞增或遞減 pulse_value，平滑調整 PC8 的紅燈亮度。   任務三：UART 序列埠非阻塞字串解析   每次迴圈利用極短逾時（1ms）的 HAL_UART_Receive 嘗試讀取 1 個位元組。當收到換行符號（\r 或 \n）時，立刻比對字串，若為 "GREEN ON" 或 "GREEN OFF" 則切換 PC6 綠色 LED 狀態。   
 ## 8. 實作照片：每張附一行圖說
 
-![硬體全貌與終端機測試](螢幕擷取畫面 2026-11-03 152122.png)
-*圖一：NUCLEO-G474RE 開發板與麵包板配線全貌，畫面顯示透過序列埠終端機成功發送 GREEN ON 指令控制綠燈[span_1](start_span)[span_1](end_span)[span_2](start_span)[span_2](end_span)。*
-電腦輸入GREEN ON 綠燈亮
-輸入GREEN OFF綠燈滅
-![按鈕與 LED 實體配線特寫](螢幕擷取畫面 2026-11-03 151938.png)
-*圖二：麵包板上的按鈕與 LED 實體電路特寫[span_3](start_span)[span_3](end_span)。*
-按鈕1按下黃燈亮
-按鈕2按下紅燈亮呼吸燈
+![硬體全貌與終端機測試](螢幕擷取畫面%202026-11-03%20152122.png)
+*圖一：NUCLEO-G474RE 開發板與麵包板配線全貌，畫面顯示透過序列埠終端機成功發送 GREEN ON 指令控制綠燈[span_2](start_span)[span_2](end_span)[span_3](start_span)[span_3](end_span)。*
+
+![按鈕與 LED 實體配線特寫](螢幕擷取畫面%202026-11-03%20151938.png)
+*圖二：麵包板上的按鈕與 LED 實體電路特寫[span_4](start_span)[span_4](end_span)。*
 
 ## 9. AI 使用說明：哪段請 AI 、你怎麼查核
 1. 哪段請 AI 協助？

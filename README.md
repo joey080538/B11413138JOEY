@@ -57,7 +57,10 @@ Baud Rate115200WORD LENGTH8BITS PARITY NONE STOP BITS 1
 *圖一：NUCLEO-G474RE 開發板與麵包板配線全貌，畫面顯示透過序列埠終端機成功發送 GREEN ON 指令控制綠燈[span_2](start_span)[span_2](end_span)[span_3](start_span)[span_3](end_span)。*
 
 ![按鈕與 LED 實體配線特寫](螢幕擷取畫面%202026-11-03%20151938.png)
-*圖二：麵包板上的按鈕與 LED 實體電路特寫[span_4](start_span)[span_4](end_span)。*
+*圖二：麵包板上的按鈕與 LED 
+按鈕1按下黃燈亮
+按鈕2按下紅燈亮呼吸燈
+實體電路特寫[span_4](start_span)[span_4](end_span)。*
 
 ## 9. AI 使用說明：哪段請 AI 、你怎麼查核
 1. 哪段請 AI 協助？
